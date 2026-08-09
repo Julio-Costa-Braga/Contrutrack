@@ -1,0 +1,8 @@
+# construtrack/cli/requirements.txt
+typer[all]==0.12.3
+rich==13.7.1
+supabase==2.5.0
+python-dotenv==1.0.1
+fpdf2==2.7.9
+Pillow==10.3.0
+python-dateutil==2.9.0
