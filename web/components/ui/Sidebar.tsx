@@ -5,24 +5,27 @@ import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import {
   LayoutDashboard, Building2, Clock, Users, UserPlus,
-  ShoppingCart, FileText, LogOut, Settings, Link2, DollarSign, Calculator, AlertTriangle, CheckCircle, Menu, X
+  ShoppingCart, FileText, LogOut, Settings, Link2, DollarSign, Calculator, AlertTriangle, CheckCircle, Menu, X,
+  ClipboardCheck, Activity
 } from 'lucide-react'
 import type { Perfil } from '@/types/database'
 import clsx from 'clsx'
 import { useState } from 'react'
 
 const PAPEL_ACESSO: Record<string, string[]> = {
-  administrador: ['dashboard', 'obras', 'ponto', 'rh', 'compras', 'relatorios', 'admin', 'integracoes', 'financeiro', 'aprovacoes', 'cotacoes', 'alertas', 'config'],
-  gerente_obra: ['dashboard', 'obras', 'ponto'],
+  administrador: ['dashboard', 'obras', 'ponto', 'rh', 'compras', 'relatorios', 'admin', 'integracoes', 'financeiro', 'aprovacoes', 'cotacoes', 'alertas', 'config', 'vistorias', 'msbd'],
+  gerente_obra: ['dashboard', 'obras', 'ponto', 'vistorias', 'msbd'],
   rh_dp: ['dashboard', 'ponto', 'rh'],
   financeiro: ['dashboard', 'compras', 'aprovacoes', 'cotacoes', 'alertas', 'config'],
-  ingeniero: ['dashboard', 'obras'],
+  ingeniero: ['dashboard', 'obras', 'vistorias', 'msbd'],
   encarregado: ['dashboard', 'ponto'],
 }
 
 const navItems = [
   { href: '/dashboard',       label: 'Dashboard',         icon: LayoutDashboard, key: 'dashboard' },
   { href: '/obras',           label: 'Estaleiros',        icon: Building2,        key: 'obras' },
+  { href: '/vistorias',       label: 'Vistorias',         icon: ClipboardCheck,   key: 'vistorias' },
+  { href: '/inspecoes',       label: 'MSBD-360',          icon: Activity,         key: 'msbd' },
   { href: '/ponto',           label: 'Ponto Eletrónico',  icon: Clock,            key: 'ponto', badge: 'ponto' },
   { href: '/rh',              label: 'RH & Onboarding',   icon: Users,            key: 'rh', badge: 'rh' },
   { href: '/rh/contratacao', label: 'Contratação',      icon: UserPlus,         key: 'contratacao' },

@@ -11,6 +11,8 @@
   "dependencies": {
     "@supabase/ssr": "^0.3.0",
     "@supabase/supabase-js": "^2.43.0",
+    "axios": "^1.19.0",
+    "browser-image-compression": "^2.0.2",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
     "jspdf": "^2.5.1",
@@ -20,6 +22,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
+    "react-signature-canvas": "^1.0.7",
     "recharts": "^3.8.1",
     "resend": "^6.12.2",
     "tailwind-merge": "^2.3.0"

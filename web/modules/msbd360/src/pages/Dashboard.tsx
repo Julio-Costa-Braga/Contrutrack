@@ -1,0 +1,141 @@
+'use client'
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
+import { ClipboardList, Eye, Trash2 } from 'lucide-react'
+import api from '../api/client'
+import { InspectionListItem } from '../types'
+
+export default function Dashboard() {
+  const [inspections, setInspections] = useState<InspectionListItem[]>([])
+  const [loading, setLoading] = useState(true)
+
+  const fetchInspections = () => {
+    api.get('/inspections').then((res) => {
+      setInspections(res.data)
+    }).finally(() => setLoading(false))
+  }
+
+  useEffect(() => {
+    fetchInspections()
+  }, [])
+
+  const handleDelete = async (id: number, name: string) => {
+    if (!confirm(`Remover a inspeção de "${name}"? Todas as medições e fotos serão excluídas.`)) return
+    try {
+      await api.delete(`/inspections/${id}`)
+      fetchInspections()
+    } catch {
+      alert('Erro ao excluir inspeção.')
+    }
+  }
+
+  const chartData = inspections
+    .filter((i) => i.overall_isa_score !== null)
+    .map((i) => ({
+      name: i.client_name.length > 15
+        ? i.client_name.slice(0, 15) + '...'
+        : i.client_name,
+      ISA: i.overall_isa_score,
+    }))
+
+  const scoredInspections = inspections.filter((i) => i.overall_isa_score !== null)
+  const avgScore = scoredInspections.reduce((acc, i) => acc + (i.overall_isa_score || 0), 0)
+  const avgScoreDisplay = scoredInspections.length > 0
+    ? (avgScore / scoredInspections.length).toFixed(1)
+    : '—'
+
+  return (
+    <div className="space-y-6">
+      <h1 className="text-2xl font-bold">Dashboard</h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-white rounded-xl shadow p-5 border border-gray-200">
+          <p className="text-sm text-gray-500">Total de Inspeções</p>
+          <p className="text-3xl font-bold mt-1">{inspections.length}</p>
+        </div>
+        <div className="bg-white rounded-xl shadow p-5 border border-gray-200">
+          <p className="text-sm text-gray-500">Concluídas</p>
+          <p className="text-3xl font-bold mt-1">{inspections.filter((i) => i.status === 'completed').length}</p>
+        </div>
+        <div className="bg-white rounded-xl shadow p-5 border border-gray-200">
+          <p className="text-sm text-gray-500">ISA Médio</p>
+          <p className="text-3xl font-bold mt-1">{avgScoreDisplay}</p>
+        </div>
+      </div>
+
+      {chartData.length > 0 && (
+        <div className="bg-white rounded-xl shadow p-5 border border-gray-200">
+          <h2 className="text-lg font-semibold mb-3">ISA por Inspeção</h2>
+          <ResponsiveContainer width="100%" height={250}>
+            <BarChart data={chartData}>
+              <XAxis dataKey="name" fontSize={12} />
+              <YAxis domain={[0, 100]} />
+              <Tooltip />
+              <Bar dataKey="ISA" fill="#1e293b" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+
+      <div className="bg-white rounded-xl shadow border border-gray-200">
+        <div className="px-5 py-4 border-b border-gray-200 flex justify-between items-center">
+          <h2 className="text-lg font-semibold">Inspeções Recentes</h2>
+          <Link
+            href="/inspecoes/nova"
+            className="text-sm bg-slate-800 text-white px-4 py-2 rounded-lg hover:bg-slate-700 transition-colors"
+          >
+            + Nova Inspeção
+          </Link>
+        </div>
+        {loading ? (
+          <p className="p-5 text-gray-500">Carregando...</p>
+        ) : inspections.length === 0 ? (
+          <div className="p-10 text-center text-gray-400">
+            <ClipboardList size={48} className="mx-auto mb-3 opacity-50" />
+            <p>Nenhuma inspeção ainda.</p>
+            <Link href="/inspecoes/nova" className="text-blue-600 hover:underline text-sm">
+              Criar primeira inspeção
+            </Link>
+          </div>
+        ) : (
+          <ul className="divide-y divide-gray-100">
+            {inspections.slice(0, 10).map((insp) => (
+              <li key={insp.id}>
+                <div className="flex items-center justify-between px-5 py-4 hover:bg-gray-50 transition-colors">
+                  <Link href={`/inspecoes/${insp.id}`} className="flex-1 min-w-0">
+                    <p className="font-medium">{insp.client_name}</p>
+                    <p className="text-sm text-gray-500 truncate">
+                      {insp.property_address} — {insp.inspector_name}
+                    </p>
+                  </Link>
+                  <div className="flex items-center gap-3 shrink-0 ml-4">
+                    <span className={`text-sm font-medium ${insp.overall_isa_score !== null ? '' : 'text-gray-400'}`}>
+                      {insp.overall_isa_score !== null ? `ISA: ${insp.overall_isa_score}` : 'Rascunho'}
+                    </span>
+                    <span className={`text-xs px-2 py-1 rounded-full ${
+                      insp.status === 'completed'
+                        ? 'bg-green-100 text-green-700'
+                        : 'bg-yellow-100 text-yellow-700'
+                    }`}>
+                      {insp.status === 'completed' ? 'Concluído' : 'Rascunho'}
+                    </span>
+                    <Link href={`/inspecoes/${insp.id}`}>
+                      <Eye size={16} className="text-gray-400 hover:text-gray-600" />
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(insp.id, insp.client_name)}
+                      className="text-red-300 hover:text-red-500"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  )
+}

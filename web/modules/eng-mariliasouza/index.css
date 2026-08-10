@@ -1,0 +1,147 @@
+/* ── Reset e base ── */.ems-root *,
+.ems-root *::before,
+.ems-root *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}.ems-root html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}.ems-root body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #f0f4f8;
+  color: #1e293b;
+  min-height: 100vh;
+  line-height: 1.5;
+}.ems-root #root {
+  min-height: 100vh;
+}
+
+/* ── Tipografia ── */.ems-root h1,
+.ems-root h2,
+.ems-root h3,
+.ems-root h4 {
+  line-height: 1.3;
+}.ems-root button {
+  font-family: inherit;
+}.ems-root input,
+.ems-root textarea,
+.ems-root select {
+  font-family: inherit;
+}
+
+/* ── Scrollbar customizada ── */.ems-root ::-webkit-scrollbar {
+  width: 6px;
+}.ems-root ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}.ems-root ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}.ems-root ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ── Utilitários globais ── */.ems-root .fade-in {
+  animation: fadeSlide 0.22s ease both;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Campos de formulário (global) ── */.ems-root .secao {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+}.ems-root .secao-titulo {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}.ems-root .secao-titulo::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background: #2563eb;
+  border-radius: 2px;
+}.ems-root .campo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}.ems-root .campo label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  letter-spacing: 0.02em;
+}.ems-root .campo input,
+.ems-root .campo textarea,
+.ems-root .campo select {
+  padding: 9px 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 14px;
+  color: #1e293b;
+  background: #ffffff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+  width: 100%;
+}.ems-root .campo input:focus,
+.ems-root .campo textarea:focus,
+.ems-root .campo select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}.ems-root .campo input::placeholder,
+.ems-root .campo textarea::placeholder {
+  color: #9ca3af;
+  font-size: 13px;
+}.ems-root .obrigatorio { color: #dc2626; margin-left: 2px; }.ems-root .opcional { color: #9ca3af; font-weight: 400; font-size: 11px; }.ems-root .grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}.ems-root .grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}.ems-root .grid-2:has(.campo-grow) {
+  grid-template-columns: 1fr 140px;
+}.ems-root .bloco-campos {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px 24px;
+}.ems-root .bloco-titulo {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}.ems-root .estado-vazio {
+  text-align: center;
+  padding: 32px 20px;
+  color: #94a3b8;
+  font-size: 14px;
+  background: #f8fafc;
+  border: 2px dashed #e2e8f0;
+  border-radius: 10px;
+}
+
+/* ── Responsivo ── */
+@media (max-width: 640px) {.ems-root .secao { padding: 20px 16px; }.ems-root .grid-2,
+.ems-root .grid-3,
+.ems-root .grid-2:has(.campo-grow) { grid-template-columns: 1fr; }
+}

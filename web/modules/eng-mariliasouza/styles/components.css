@@ -1,0 +1,480 @@
+/* ═══════════════════════════════════════════
+   components.css
+   Estilos de todos os componentes do sistema
+═══════════════════════════════════════════ */
+
+/* ── Toolbar ── */.ems-root .toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+}.ems-root .toolbar-status {
+  font-size: 12px;
+}.ems-root .status-salvo { color: #16a34a; }.ems-root .status-pendente { color: #94a3b8; }.ems-root .toolbar-acoes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}.ems-root .btn-toolbar {
+  padding: 7px 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}.ems-root .btn-secundario {
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+}.ems-root .btn-secundario:hover {
+  border-color: #cbd5e1;
+  background: #f1f5f9;
+}.ems-root .btn-primario {
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(37,99,235,0.3);
+}.ems-root .btn-primario:hover {
+  background: #1d4ed8;
+}
+
+/* ── Layout principal ── */.ems-root .pagina { min-height: 100vh; background: #e8ecf0; }.ems-root .conteudo {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}.ems-root .titulo-pagina {
+  margin-bottom: 28px;
+}.ems-root .titulo-pagina h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 4px;
+}.ems-root .titulo-pagina p {
+  font-size: 14px;
+  color: #475569;
+}
+
+/* ── ImovelForm ── */.ems-root .seletor-tipo {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}.ems-root .btn-tipo {
+  flex: 1;
+  min-width: 120px;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}.ems-root .btn-tipo:hover {
+  border-color: #93c5fd;
+  background: #eff6ff;
+  color: #1d4ed8;
+  transform: translateY(-1px);
+}.ems-root .btn-tipo.ativo {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+
+/* ── Cômodo Card ── */.ems-root .comodo-card {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}.ems-root .comodo-header {
+  background: #e8ecf0;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #cbd5e1;
+}.ems-root .comodo-nome-area { flex: 1; }.ems-root .comodo-nome-btn {
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+}.ems-root .comodo-nome-btn:hover .comodo-editar-icone { opacity: 1; }.ems-root .comodo-editar-icone { opacity: 0; font-size: 13px; transition: opacity 0.15s; }.ems-root .comodo-nome-input {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+  border: 1.5px solid #2563eb;
+  border-radius: 6px;
+  padding: 4px 8px;
+  outline: none;
+  width: 100%;
+  max-width: 320px;
+}.ems-root .btn-remover-comodo {
+  background: none;
+  border: 1.5px solid #fca5a5;
+  color: #dc2626;
+  border-radius: 7px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}.ems-root .btn-remover-comodo:hover { background: #fef2f2; }
+
+/* ── Seleção rápida de elementos ── */.ems-root .elementos-rapidos-area {
+  padding: 16px;
+  border-bottom: 1px solid #f1f5f9;
+}.ems-root .elementos-titulo {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 10px;
+}.ems-root .elementos-rapidos-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}.ems-root .btn-elemento-rapido {
+  padding: 6px 12px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}.ems-root .btn-elemento-rapido:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+}.ems-root .elemento-custom {
+  display: flex;
+  gap: 8px;
+}.ems-root .elemento-custom input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 7px;
+  font-size: 13px;
+  color: #1e293b;
+  outline: none;
+  transition: border-color 0.15s;
+}.ems-root .elemento-custom input:focus { border-color: #2563eb; }.ems-root .btn-adicionar-custom {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 7px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}.ems-root .btn-adicionar-custom:hover { background: #1d4ed8; }.ems-root .elementos-lista { padding: 12px 16px; display: flex; flex-direction: column; gap: 10px; }
+
+/* ── Elemento de Inspeção ── */.ems-root .elemento-card {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f5f6f8;
+}.ems-root .elemento-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #e8ecf0;
+  border-bottom: 1px solid #cbd5e1;
+}.ems-root .elemento-toggle {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  flex: 1;
+}.ems-root .elemento-nome {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+}.ems-root .btn-remover-elemento {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 0.15s;
+}.ems-root .btn-remover-elemento:hover { color: #dc2626; }.ems-root .elemento-corpo { padding: 14px 16px; }
+
+/* ── Patologias ── */.ems-root .patologias-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}.ems-root .btn-patologia {
+  padding: 5px 11px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 6px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}.ems-root .btn-patologia:hover { border-color: #fca5a5; color: #dc2626; background: #fef2f2; }.ems-root .btn-patologia.ativo {
+  border-color: #dc2626;
+  background: #fef2f2;
+  color: #dc2626;
+  font-weight: 600;
+}
+
+/* ── Foto Upload ── */.ems-root .foto-upload-container {
+  background: #f0f4f8;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 8px;
+}.ems-root .fotos-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}.ems-root .slot-foto {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}.ems-root .slot-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}.ems-root .btn-adicionar-foto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 20px 12px;
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #94a3b8;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  width: 100%;
+}.ems-root .btn-adicionar-foto:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+  background: #eff6ff;
+}.ems-root .foto-icone { font-size: 22px; }.ems-root .foto-preview {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}.ems-root .foto-preview img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}.ems-root .btn-remover-foto {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Adicionar Cômodo ── */.ems-root .adicionar-comodo {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}.ems-root .adicionar-comodo input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1e293b;
+  outline: none;
+  transition: border-color 0.15s;
+}.ems-root .adicionar-comodo input:focus { border-color: #2563eb; }.ems-root .btn-adicionar-comodo {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}.ems-root .btn-adicionar-comodo:hover { background: #1d4ed8; }
+
+/* ── Assinatura ── */.ems-root .assinatura-wrapper { display: flex; flex-direction: column; gap: 12px; }.ems-root .canvas-instrucao {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 8px;
+}.ems-root .assinatura-canvas {
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  width: 100% !important;
+  max-width: 600px;
+  touch-action: none;
+}.ems-root .assinatura-acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}.ems-root .btn-limpar-assinatura {
+  padding: 8px 16px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 7px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 13px;
+  cursor: pointer;
+}.ems-root .btn-salvar-assinatura {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 7px;
+  background: #16a34a;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}.ems-root .assinatura-preview { display: flex; flex-direction: column; gap: 10px; }.ems-root .assinatura-img {
+  max-width: 300px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px;
+  background: #fff;
+}
+
+/* ── Botão final PDF Business ── */.ems-root .btn-gerar-pdf-business {
+  padding: 14px 40px;
+  border: none;
+  border-radius: 10px;
+  background: #1e293b;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.15s;
+}.ems-root .btn-gerar-pdf-business:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+/* ── Botão final PDF ── */.ems-root .btn-gerar-pdf-final {
+  padding: 14px 40px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+  transition: all 0.15s;
+}.ems-root .btn-gerar-pdf-final:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(37,99,235,0.35);
+}
+
+/* ── Botão Business na toolbar ── */.ems-root .btn-business {
+  border: none;
+  background: #1e293b;
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}.ems-root .btn-business:hover {
+  background: #000000;
+}
+
+/* ── Seletor de tipo de relatório ── */.ems-root .btn-tipo-relatorio {
+  flex: 1;
+  min-width: 200px;
+  padding: 14px 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-align: center;
+}.ems-root .btn-tipo-relatorio:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+}.ems-root .btn-tipo-relatorio.ativo {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+
+/* ── Inputs e campos com tom mais escuro ── */.ems-root .campo input,
+.ems-root .campo textarea,
+.ems-root .campo select {
+  background: #f2f4f7;
+  border-color: #cbd5e1;
+  color: #1e293b;
+}.ems-root .campo input:focus,
+.ems-root .campo textarea:focus,
+.ems-root .campo select:focus {
+  background: #ffffff;
+  border-color: #64748b;
+}.ems-root .secao {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}.ems-root .secao-titulo {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e8ecf0;
+}
+
+/* ── Responsivo ── */
+@media (max-width: 640px) {.ems-root .toolbar { padding: 8px 12px; }.ems-root .toolbar-acoes { gap: 6px; }.ems-root .btn-toolbar { padding: 6px 10px; font-size: 12px; }.ems-root .conteudo { padding: 16px 12px 48px; }.ems-root .fotos-linha { grid-template-columns: 1fr; }.ems-root .adicionar-comodo { flex-direction: column; }.ems-root .seletor-tipo { flex-direction: column; }.ems-root .btn-tipo { min-width: unset; }.ems-root .elementos-rapidos-lista { gap: 4px; }.ems-root .elemento-custom { flex-direction: column; }.ems-root .assinatura-canvas { height: 120px !important; }
+}
